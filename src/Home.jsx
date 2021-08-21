@@ -22,8 +22,10 @@ export const Home = () => {
     },
   });
 
+  // Loads more repos from the GraphQL API once the end of the screen is reached
   const loadMore = () => {
     setLoading(true);
+
     fetchMore({
       variables: {
         first,
@@ -35,24 +37,30 @@ export const Home = () => {
 
         setLoading(false);
 
+        // Increases the number of repos to request from the API
         if (first <= 50) setFirst(first + 10);
 
-        return setRepos([
+        // Only gets the new repos that is loaded from the API
+        // Excludes the repos that was already there in the repos array
+        const newRepos = [
           ...previousResult.search.edges,
           ...fetchMoreResult.search.edges.slice(
             previousResult.search.edges.length,
             fetchMoreResult.search.edges.length
           ),
-        ]);
+        ];
+
+        return setRepos(newRepos);
       },
     });
   };
 
+  // Sets the repos when the data is initially loaded
   useEffect(() => {
     if (data) {
       setRepos([...repos, ...data.search.edges]);
     }
-  }, [dataLoading, data]);
+  }, [data]);
 
   return (
     <div>
