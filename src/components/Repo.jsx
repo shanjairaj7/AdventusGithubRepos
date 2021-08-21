@@ -6,7 +6,10 @@ export const Repo = ({ repo, reposLength, index, loadMore }) => {
   const daysAgo = formatDistanceToNow(new Date(repo.createdAt));
 
   const observer = useRef();
-  const lastElementRef = useCallback((node) => {
+
+  // Observe screen to run the loadMore function
+  // when the last element is visible in the screen
+  const observeScreen = (node) => {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
@@ -16,8 +19,12 @@ export const Repo = ({ repo, reposLength, index, loadMore }) => {
       }
     });
     if (node) observer.current.observe(node);
-  });
+  };
 
+  const lastElementRef = useCallback(observeScreen);
+
+  // Only attach the ref to the last element
+  // So that the loadMore function gets called once the user reaches and views the last element
   if (reposLength === index + 1) {
     return (
       <div className="repo" ref={lastElementRef}>
