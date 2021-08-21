@@ -13,6 +13,7 @@ Run this command to clone the code files to your computer
 Run this command to install all of the dependencies and packages used in this application
 
 `Github Token`
+
 Before running the application, please paste the Github Token that was sent through the CoderByte submission form in the .env file in the field of REACT_APP_TOKEN.
 
 `npm start`
