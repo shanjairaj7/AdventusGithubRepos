@@ -4,15 +4,15 @@ This is a website where you can view the 50 most popular Javascript Repositories
 
 ## How to run this project
 
-### `git clone https://github.com/shanjairaj7/AdventusGithubRepos.git`
+`git clone https://github.com/shanjairaj7/AdventusGithubRepos.git`
 
 Run this command to clone the code files to your computer
 
-### `npm install`
+`npm install`
 
 Run this command to install all of the dependencies and packages used in this application
 
-### `npm start`
+`npm start`
 
 By running this command you can view the application in your browser on localhost:3000
 
