@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Repo } from "../components/Repo";
 
-export const Repos = ({ repos }) => {
+export const Repos = ({ repos, loadMore }) => {
   return (
     <div className="repos">
-      {repos.search.edges.map((repo) => (
-        <Repo repo={repo.node} />
-      ))}
+      {repos.map((repo, index) => {
+        return (
+          <Repo
+            index={index}
+            repo={repo.node}
+            reposLength={repos.length}
+            loadMore={loadMore}
+          />
+        );
+      })}
     </div>
   );
 };
