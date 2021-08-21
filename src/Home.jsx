@@ -9,6 +9,7 @@ export const Home = () => {
   const [repos, setRepos] = useState([]);
   const [first, setFirst] = useState(10);
 
+  // This state is used to find the loading state when new repos are being loaded
   const [loading, setLoading] = useState(false);
 
   const {

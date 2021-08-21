@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Repo } from "../components/Repo";
 
 export const Repos = ({ repos, loadMore }) => {
